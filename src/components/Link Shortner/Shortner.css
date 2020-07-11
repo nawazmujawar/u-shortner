@@ -1,0 +1,64 @@
+.container{
+   margin: 0 auto;
+  max-width: 80%;
+  text-align: center;
+}
+.Title{
+font-family: 'Pacifico', cursive;
+font-weight: bolder;
+font-size:20vw;
+color: black;
+text-shadow: 2px 8px gray;
+text-align: center;
+width: fit-content;
+
+}
+
+#InputUrl{
+    width: 100%;
+}
+.align-middle{
+     position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+input {
+margin-top: 30px;
+  outline: 0;
+  width: 100%;
+  background: white;
+  border-color: transparent;
+  height:50px;
+-webkit-box-shadow: 0 0 20px gray;
+        box-shadow: 0 0 20px gray;
+ 
+}
+::placeholder {
+  color: gray;
+  font-size: 20px;
+}
+.slogan{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+#getLink{
+    margin-top: 20px;
+ margin-left: auto;
+  margin-right: auto;
+  display: block;
+    font-size: 20px;
+    font-weight: bolder;
+    
+}
+#copyBtn{
+  background-color: transparent;
+  border: none;
+
+}
+
+body{
+    background-color: #00ff85;
+    font-family: 'Open Sans', sans-serif;
+}
