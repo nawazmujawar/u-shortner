@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import './Shortner.css'
 import copyLogo from '../../img/portable-document-format.svg'
+import Spinner from '../Spinner/Spinner'
 
 import Axios from 'axios'
 class Shortner extends Component {
     state = {
         URL: "",
         shortURL: "",
-        display: false
+        display: false,
+        isloading: false
     }
     // componentDidMount() {
     //     this.urlHandler()
@@ -18,18 +20,37 @@ class Shortner extends Component {
         }
         console.log(data)
         const response = await Axios.post("https://url-shortner-backend.herokuapp.com/shortner", data)
+        setTimeout(() => {
+            this.setState({
+                isloading: false
+            })
+        }, 2000)
         console.log(response.data.URL)
         this.setState({
             shortURL: response.data.URL,
-            display: true
+            display: true,
+            isloading: true
         })
     }
     copyClickHandler = () => {
         navigator.clipboard.writeText(this.state.shortURL)
         alert("copied")
+        this.setState({
+            URL: "",
+            shortURL: "",
+            display: false
+        })
     }
     render() {
-
+        if (this.state.isloading) {
+            return <div style={
+                {
+                    position: "absolute",
+                    top: "40%",
+                    left: "50%"
+                }
+            }><Spinner /></div>
+        }
 
         return (
 
@@ -47,7 +68,7 @@ class Shortner extends Component {
                             :
                             <div style={{ textAlign: "center" }}>
                                 <p style={{ backgroundColor: "#D3D3D3", height: "45px", fontSize: "30px", fontWeight: "bold" }}>{this.state.shortURL}</p>
-                                <button id="copyBtn" onClick={this.copyClickHandler}><img src={copyLogo} style={{ width: "40px", height: "40px" }} /></button>
+                                <button id="copyBtn" onClick={this.copyClickHandler}><img src={copyLogo} alt="Copy" style={{ width: "40px", height: "40px" }} /></button>
                             </div>
                     }
 
